@@ -1,0 +1,12 @@
+{
+  "extends": "../config/typescript/base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": ["src/**/*.ts"]
+}

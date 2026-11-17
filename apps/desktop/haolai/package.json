@@ -1,0 +1,52 @@
+{
+  "name": "@phoenix/haolai-desktop",
+  "private": true,
+  "version": "1.0.0-beta.10",
+  "description": "号来 Phoenix 独立桌面版",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test checks/*.test.mjs",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "package": "node scripts/package-tauri.mjs",
+    "package:installer": "node scripts/package-tauri.mjs --installer",
+    "package:portable": "node scripts/package-tauri.mjs --portable"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@hookform/resolvers": "^7.0.2",
+    "@phoenix/types": "file:../../../packages/types",
+    "@phoenix/ui": "file:../../../packages/ui",
+    "@phoenix/utils": "file:../../../packages/utils",
+    "@reduxjs/toolkit": "^2.12.0",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-notification": "^2",
+    "@tauri-apps/plugin-opener": "2.5.5",
+    "immer": "^11.1.4",
+    "lucide-react": "^1.64.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.91.0",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^7.18.3",
+    "xlsx": "^0.18.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@tauri-apps/cli": "^2",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^5.0.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5",
+    "vite": "^7.0.6"
+  }
+}

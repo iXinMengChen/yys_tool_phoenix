@@ -1,0 +1,16 @@
+import type { ReactNode } from "react";
+import type { RelicView } from "@/types";
+
+export type RelicListProps = {
+  items: RelicView[];
+  highlightedSubAttributes: string[];
+  highlightedSuitNames?: string[];
+  desktopColumns?: number;
+  desktopRows?: number;
+  disablePagination?: boolean;
+  hideVisual?: boolean;
+  interactive?: boolean;
+  compact?: boolean;
+  itemBadge?: (item: RelicView) => ReactNode;
+  hiddenMainAttributePositions?: number[];
+};

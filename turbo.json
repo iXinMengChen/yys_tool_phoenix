@@ -1,0 +1,19 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "env": ["API_BASE_URL", "API_PORT", "API_PROXY_URL", "DATABASE_URL", "CBG_LOGIN_COOKIE", "NEXT_PUBLIC_API_BASE_URL", "VITE_DESKTOP_VERSION_URL", "PORT"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "env": ["API_BASE_URL", "API_PORT", "API_PROXY_URL", "DATABASE_URL", "CBG_LOGIN_COOKIE", "NEXT_PUBLIC_API_BASE_URL", "VITE_DESKTOP_VERSION_URL", "PORT"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    {
+      "identifier": "opener:allow-open-url",
+      "allow": [
+        { "url": "https://yys.cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://yys.cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://yys.cbg.163.com/*", "app": "firefox.exe" },
+        { "url": "https://cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://cbg.163.com/*", "app": "firefox.exe" },
+        { "url": "https://yys-huawei.cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://yys-huawei.cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://yys-huawei.cbg.163.com/*", "app": "firefox.exe" },
+        { "url": "https://yys-oppo.cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://yys-oppo.cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://yys-oppo.cbg.163.com/*", "app": "firefox.exe" },
+        { "url": "https://yys-vivo.cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://yys-vivo.cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://yys-vivo.cbg.163.com/*", "app": "firefox.exe" },
+        { "url": "https://yys-xiaomi.cbg.163.com/*", "app": "msedge.exe" },
+        { "url": "https://yys-xiaomi.cbg.163.com/*", "app": "chrome.exe" },
+        { "url": "https://yys-xiaomi.cbg.163.com/*", "app": "firefox.exe" },
+        {
+          "url": "https://github.com/iXinMengChen/yys-cbg-inspector/tree/tauri",
+          "app": "msedge.exe"
+        },
+        {
+          "url": "https://github.com/iXinMengChen/yys-cbg-inspector/tree/tauri",
+          "app": "chrome.exe"
+        },
+        {
+          "url": "https://github.com/iXinMengChen/yys-cbg-inspector/tree/tauri",
+          "app": "firefox.exe"
+        }
+      ]
+    },
+    "notification:allow-is-permission-granted",
+    "notification:allow-request-permission",
+    "notification:allow-notify"
+  ]
+}

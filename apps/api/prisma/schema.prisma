@@ -1,0 +1,93 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model DesktopRelease {
+  version     String   @id
+  notes       String   @default("") @db.Text
+  downloadUrl String
+  publishedAt DateTime @default(now())
+}
+
+model AccountSnapshot {
+  channel        String
+  serverId       String
+  orderSn        String
+  accountPayload Json
+  relicVersion   String
+  relicPayload   Json
+  cachedAt       DateTime @default(now())
+  expiresAt      DateTime
+
+  @@id([channel, serverId, orderSn])
+  @@index([expiresAt])
+}
+
+// Client-uploaded text for later retrieval; never treated as verified upstream data.
+model ProductSummary {
+  id         String   @id @default(uuid())
+  channel    String
+  serverId   String
+  orderSn    String
+  summary    String   @db.Text
+  source     String   @default("client_upload")
+  uploadedAt DateTime @default(now())
+  expiresAt  DateTime
+
+  @@unique([channel, serverId, orderSn])
+  @@index([expiresAt])
+}
+
+model HeroCatalog {
+  id                        Int      @id
+  name                      String   @db.VarChar(64)
+  slug                      String   @unique @db.VarChar(128)
+  level                     String   @db.VarChar(3)
+  attack                    Decimal  @db.Decimal(12, 4)
+  health                    Decimal  @db.Decimal(12, 4)
+  defense                   Decimal  @db.Decimal(12, 4)
+  speed                     Decimal  @db.Decimal(10, 4)
+  critRate                  Decimal  @map("crit_rate") @db.Decimal(10, 4)
+  critDamage                Decimal  @map("crit_damage") @db.Decimal(10, 4)
+  effectHit                 Decimal  @map("effect_hit") @db.Decimal(10, 4)
+  effectResistance          Decimal  @map("effect_resistance") @db.Decimal(10, 4)
+  lowestRank                String   @map("lowest_rank") @db.VarChar(255)
+  isCollaboration           Boolean  @map("is_collaboration")
+  additionalAttributes      String?  @map("additional_attributes") @db.VarChar(255)
+  additionalAttributesValue Int      @map("additional_attributes_value")
+  updatedAt                 DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([level])
+  @@map("heroes")
+}
+
+model RelicSuitCatalog {
+  id                Int      @id
+  name              String   @db.VarChar(64)
+  slug              String   @unique @db.VarChar(128)
+  twoPieceAttribute String   @map("two_piece_attribute") @db.VarChar(128)
+  twoPieceEffect    String   @map("two_piece_effect")
+  isOma             Boolean  @map("is_oma")
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at")
+
+  @@index([isOma])
+  @@map("relic_suits")
+}
+
+// Full public official JSON, including sections not yet used by the Web UI.
+model CbgGameAutoConfig {
+  gameId     String   @id @map("game_id") @db.VarChar(32)
+  sourceUrl  String   @map("source_url")
+  sourceHash String   @map("source_hash") @db.Char(64)
+  payload    Json
+  syncedAt   DateTime @default(now()) @map("synced_at")
+  updatedAt  DateTime @updatedAt @map("updated_at")
+
+  @@map("cbg_game_auto_config")
+}

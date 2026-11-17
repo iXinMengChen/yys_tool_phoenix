@@ -1,0 +1,18 @@
+shared: true
+overwrite: true
+apps:
+  api:
+    API_BASE_URL: /api
+    API_PORT: '43127'
+    DATABASE_URL: postgresql://USER:PASSWORD@127.0.0.1:5432/yys_data_phoenix?schema=public
+    # 仅服务端配置；留空时官方账号查询不可用，不得添加 NEXT_PUBLIC_ 前缀。
+    # 填写含 sid 的完整登录 Cookie；login_auto 刷新后的 SID 仅在进程内存更新。
+    # 生成 .env 后请用双引号包住完整 Cookie，避免 # 等字符被 dotenv 截断。
+    CBG_LOGIN_COOKIE: ''
+  web:
+    API_PROXY_URL: http://127.0.0.1:43127
+    NEXT_PUBLIC_API_BASE_URL: /api
+    PORT: '24974'
+  desktop:
+    # 可选的完整公开版本接口地址；留空禁用版本检查，不使用旧通道。
+    VITE_DESKTOP_VERSION_URL: ''

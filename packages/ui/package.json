@@ -1,0 +1,43 @@
+{
+  "name": "@phoenix/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./components/*": "./src/components/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./styles/*": "./src/styles/*",
+    "./pages": "./src/pages/index.ts",
+    "./pages/*": "./src/pages/*.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^7.0.2",
+    "@phoenix/types": "file:../types",
+    "@phoenix/utils": "file:../utils",
+    "react-hook-form": "^7.91.0",
+    "zod": "^4.6.7",
+    "cn": "^0.5.0"
+  },
+  "devDependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^1.64.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5"
+  },
+  "peerDependencies": {
+    "@base-ui/react": "^1.9.0",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^1.64.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}

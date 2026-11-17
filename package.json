@@ -1,0 +1,39 @@
+{
+  "name": "yys-cbg-inspector-phoenix",
+  "version": "0.1.0",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "packageManager": "pnpm@12.16.1",
+  "scripts": {
+    "dev": "monoenv && turbo run dev --filter=!@phoenix/haolai-desktop",
+    "dev:desktop": "monoenv && pnpm --filter @phoenix/haolai-desktop tauri:dev",
+    "typecheck:desktop": "pnpm --filter @phoenix/haolai-desktop typecheck",
+    "dev:web": "monoenv && pnpm --filter @phoenix/web dev",
+    "dev:api": "monoenv && pnpm --filter @phoenix/api start:dev",
+    "db:init": "monoenv && pnpm --filter @phoenix/api db:init",
+    "db:generate": "pnpm --filter @phoenix/api prisma:generate",
+    "db:import-catalog": "monoenv && pnpm --filter @phoenix/api import:catalog",
+    "db:migrate": "monoenv && pnpm --filter @phoenix/api prisma:migrate && pnpm --filter @phoenix/api prisma:generate",
+    "build": "monoenv && turbo run build",
+    "build:web": "monoenv && pnpm --filter @phoenix/web build",
+    "package:web": "pnpm build:web && node scripts/package-web.mjs",
+    "build:api": "monoenv && pnpm --filter @phoenix/api build",
+    "package:api": "pnpm build:api && node scripts/package-api.mjs",
+    "package:desktop": "monoenv && pnpm --filter @phoenix/haolai-desktop package",
+    "package:desktop:installer": "monoenv && pnpm --filter @phoenix/haolai-desktop package:installer",
+    "package:desktop:portable": "monoenv && pnpm --filter @phoenix/haolai-desktop package:portable",
+    "version:desktop": "node scripts/set-desktop-version.mjs",
+    "lint": "eslint apps packages",
+    "typecheck": "turbo run typecheck",
+    "typecheck:web": "pnpm --filter @phoenix/web typecheck",
+    "typecheck:api": "pnpm --filter @phoenix/api typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "monoenv": "2.0.0",
+    "turbo": "^2.11.10",
+    "typescript": "^5"
+  }
+}
