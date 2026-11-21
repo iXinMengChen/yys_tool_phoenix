@@ -14,8 +14,6 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '
 const releaseRoot = path.join(projectRoot, 'src-tauri', 'target', 'release')
 const outputRoot = path.join(projectRoot, 'release', 'tauri')
 const staticAssetsSource = path.resolve(projectRoot, '../../../packages/assets/haolai')
-const licenseSource = path.join(projectRoot, 'LICENSE')
-const repositoryLicense = path.resolve(projectRoot, '../../../LICENSE')
 const mode = process.argv[2] === undefined
   ? 'all'
   : process.argv[2] === '--installer'
@@ -102,20 +100,11 @@ async function copyPortable({ productName, version, mainBinaryName }) {
   const portableDirectory = path.join(outputRoot, 'portable', `${productName}-${version}`)
   await mkdir(path.join(portableDirectory, 'static-data'), { recursive: true })
   await cp(executable, path.join(portableDirectory, `${productName}.exe`))
-  await cp(licenseSource, path.join(portableDirectory, 'LICENSE'))
   await cp(
     staticAssetsSource,
     path.join(portableDirectory, 'static-data', 'assets'),
     { recursive: true },
   )
-}
-
-const [desktopLicense, rootLicense] = await Promise.all([
-  readFile(licenseSource),
-  readFile(repositoryLicense),
-])
-if (!desktopLicense.equals(rootLicense)) {
-  throw new Error('桌面端 LICENSE 与仓库根目录 LICENSE 不一致，请先同步')
 }
 
 const artifactConfig = await readTauriConfig()
