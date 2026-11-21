@@ -16,7 +16,7 @@ pnpm package:desktop:installer
 pnpm package:desktop:portable
 ```
 
-桌面发布产物统一整理到 `apps/desktop/haolai/release/tauri/`：`installer/` 保存 NSIS 安装包，`portable/<产品名>-<版本>/` 保存可直接运行的程序和 `static-data/assets/`。完整打包生成两类产物；两个带后缀命令只生成对应类型。打包需要 Rust、Windows WebView2 和系统编译工具。
+桌面发布产物统一整理到 `apps/desktop/haolai/release/tauri/`：`installer/` 保存 NSIS 安装包，`portable/<产品名>-<版本>/` 保存可直接运行的程序和 `static-data/assets/`。安装版与免安装版均包含 Phoenix `LICENSE`，发布脚本会在打包前检查它与仓库根目录的许可证一致。完整打包生成两类产物；两个带后缀命令只生成对应类型。打包需要 Rust、Windows WebView2 和系统编译工具。
 
 仅预览 UI 可运行 `pnpm --filter @phoenix/haolai-desktop dev`，端口 `12832`；普通浏览器没有本地藏宝阁桥，取数、登录和原生操作会明确报不支持。Tauri 开发需要 Rust、Windows WebView2 和系统编译工具。未经明确要求不执行 build/打包。
 

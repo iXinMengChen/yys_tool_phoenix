@@ -44,7 +44,8 @@
   },
   "bundle": {
     "resources": {
-      "../../../../packages/assets/haolai/*": "static-data/assets/"
+      "../../../../packages/assets/haolai/*": "static-data/assets/",
+      "../LICENSE": "LICENSE"
     },
     "active": true,
     "targets": ["nsis"],
